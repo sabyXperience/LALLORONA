@@ -276,7 +276,8 @@ body{font-family:Georgia,'Crimson Text',serif;background:#0E0813;color:var(--tin
 .stage-dots .dot.solved.mxc5{background:#FF3B30;border-color:#FF3B30;box-shadow:0 0 8px rgba(255,59,48,.6)}
 .stage-dots .dot.current{transform:scale(1.2);box-shadow:0 0 0 2px rgba(232,118,44,.5)}
 .stage-dots .dot.locked{cursor:not-allowed;opacity:.55}
-.stage-dots .dot.nav-link{width:auto;min-width:40px;border-radius:12px;padding:0 10px;font-size:9px;letter-spacing:.04em;text-transform:uppercase}
+.stage-dots .dot.nav-link{width:auto;min-width:40px;border-radius:12px;padding:0 10px;font-size:9px;letter-spacing:.04em;text-transform:uppercase;background:rgba(232,118,44,.28);border-color:#E8762C;color:#FFD9A8;font-weight:700}
+.stage-dots .dot.nav-link:hover{background:rgba(232,118,44,.45)}
 
 #musicToggle{position:fixed;bottom:84px;right:14px;z-index:9500;width:46px;height:46px;border-radius:50%;border:none;background:rgba(20,12,28,.75);color:var(--cempasuchill);font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 #chronoBadge{position:fixed;bottom:28px;right:14px;z-index:9500;font-family:'Courier New',monospace;font-size:13px;color:var(--cempasuchill);background:rgba(20,12,28,.75);border-radius:20px;padding:8px 16px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
@@ -406,7 +407,9 @@ body{font-family:Georgia,'Crimson Text',serif;background:#0E0813;color:var(--tin
 /* ── Étape 8 : lotería (devinettes) ── */
 .lot-wrap{margin:10px 0}
 .lot-cards{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:14px}
-.lot-card{width:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:10px;padding:10px 6px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.3);border:3px solid rgba(255,255,255,.3)}
+.lot-card{width:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:10px;padding:10px 6px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,.3);border:3px solid rgba(255,255,255,.3);cursor:pointer;transition:transform .12s,box-shadow .12s}
+.lot-card:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 5px 12px rgba(0,0,0,.4)}
+.lot-card:active{transform:scale(.96)}
 .lot-icon{font-size:24px}
 .lot-name{font-size:9.5px;font-weight:700;margin:4px 0 1px;text-transform:uppercase;letter-spacing:.02em}
 .lot-tr{font-size:8px;font-style:italic;opacity:.8;margin-bottom:3px}
@@ -450,6 +453,12 @@ body{font-family:Georgia,'Crimson Text',serif;background:#0E0813;color:var(--tin
 .dom-half{font-size:30px;width:52px;display:flex;align-items:center;justify-content:center;padding:13px 3px}
 .dom-div{width:2.5px;background:rgba(0,0,0,.35)}
 .dom-letter{position:absolute;top:-12px;right:-12px;width:29px;height:29px;border-radius:50%;font-family:Georgia,serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,.45);border:1.5px solid rgba(255,255,255,.65);z-index:1}
+.dom-tile{cursor:pointer;transition:transform .15s,box-shadow .15s}
+.dom-tile:hover{transform:translateY(-2px)}
+.dom-tile:active{transform:scale(.95)}
+.dom-tile.dom-used{box-shadow:0 0 0 3px var(--jade),0 4px 10px rgba(0,0,0,.4)}
+.dom-tile.dom-used .dom-half{background:#5a5a5a!important;opacity:.6}
+.dom-tile.dom-used .dom-letter{background:var(--jade)!important;color:#fff!important}
 
 /* ── Consentement ── */
 #consent{position:fixed;left:0;right:0;bottom:0;z-index:1000001;background:#FBF6EA;color:#2B2316;border-top:2px solid var(--cempasuchil);box-shadow:0 -6px 24px rgba(0,0,0,.35);padding:14px max(16px,env(safe-area-inset-right)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left));display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;justify-content:center;max-height:60vh;max-height:60dvh;overflow-y:auto;font-family:Georgia,serif}
@@ -1063,7 +1072,7 @@ const STAGES = {
    "sub": "La rue aux papiers découpés — 19 h 45",
    "story": "La rue principale est tendue de guirlandes de papel picado, ce papier de couleur découpé en motifs de crânes et de fleurs qui claque doucement dans le vent du soir. Nazario vous attend sous la dernière guirlande, son chien Xólotl assis à ses pieds, aussi silencieux que son maître. Une section de la guirlande a été arrachée puis grossièrement raccrochée à l'envers — quelqu'un est passé par là avant vous, et vite. « Ezequiel tient la boutique de prêt sur gages, au coin de la place », dit seulement Nazario, en désignant une fenêtre encore allumée malgré l'heure. Accrochés parmi les banderoles, neuf petits carrés de papier pliés en quatre, chacun découpé aux ciseaux — exactement comme Catalina plie toujours le sien avant de couper. À côté de chaque carré, deux autres dépliages traînent au sol, légèrement différents : des essais ratés, ou des pièges.",
    "fact": "Le papel picado — « papier piqué » — est un artisanat mexicain né dans la région de Puebla, où des artisans découpent à la lame ou au ciseau des dizaines de feuilles de papier de soie empilées pour former un même motif. Accroché lors du Día de los Muertos, il symbolise la fragilité et la brièveté de la vie : le vent qui le déchire peu à peu rappelle que rien n'est éternel, pas même le souvenir qu'on ne nourrit pas.",
-   "puzzleIntro": "Catalina n'a plié chaque carré qu'en quatre, comme en vrai papel picado : une fois déplié, le motif se reflète en miroir dans les quatre coins, jamais en simple rotation ni en copie à l'identique. Pour chaque lettre, retrouvez, parmi les quatre dépliages proposés, celui qui respecte ce miroir à quatre faces. Attention : une erreur fait tout recommencer depuis le premier carré.",
+   "puzzleIntro": "Catalina n'a plié chaque carré qu'en quatre, comme en vrai papel picado : une fois déplié, le motif se reflète en miroir dans les quatre coins, jamais en simple rotation ni en copie à l'identique. Pour chaque lettre, retrouvez, parmi les trois dépliages proposés, celui qui respecte ce miroir à quatre faces. Attention : une erreur fait tout recommencer depuis le premier carré.",
    "hint": "Un vrai pliage en quatre donne un motif en miroir : ce qui est à gauche doit se retrouver à droite inversé, ce qui est en haut doit se retrouver en bas inversé. Si le motif tourne comme un moulinet, s'il se répète à l'identique sans se refléter, ou s'il manque un petit trou par rapport aux trois autres coins, ce n'est pas le bon dépliage. Le mot de 9 lettres orne chaque rue du village ce soir.",
    "answer": "GUIRLANDE",
    "isFoldGame": true
@@ -1071,7 +1080,7 @@ const STAGES = {
   {
    "title": "Le Reflet du Lac",
    "sub": "L'atrium de l'église, face au lac — 20 h 30",
-   "story": "L'atrium de la petite église domine le lac noir. Des dizaines de bougies tremblent sur les tombes voisines, et leur reflet trace sur l'eau un second village, inversé, presque identique. « Pour nous, dit Nazario en s'asseyant sur les marches, cette nuit-là, le monde des vivants et celui des morts se regardent comme deux rives d'une même eau. Ce qui se passe ici se répond là-bas. » Xólotl fixe le lac sans bouger, comme s'il attendait un signal. Parmi les bougies posées sur les marches, un petit portrait encadré, le métal du cadre terni par les années — le visage qu'il montre ne vous est pas familier, mais son verre, embué par la chaleur des flammes, ne reflète plus très bien son modèle : on y devine plutôt un mot tracé à la cire fondue, chaque lettre comme retournée sur elle-même, ainsi qu'un reflet. Un instant, dans le reflet tremblant des bougies, vous croyez reconnaître un visage qui n'est pas le vôtre — puis, plus loin sur l'eau, un pleur, si bas qu'il pourrait n'être que le vent. Nazario ne lève pas les yeux. « Elle aussi attend quelqu'un », dit-il simplement.",
+   "story": "L'atrium de la petite église domine le lac noir. Des dizaines de bougies tremblent sur les tombes voisines, et leur reflet trace sur l'eau un second village, inversé, presque identique. « Pour nous, dit Nazario en s'asseyant sur les marches, cette nuit-là, le monde des vivants et celui des morts se regardent comme deux rives d'une même eau. Ce qui se passe ici se répond là-bas. » Xólotl fixe le lac sans bouger, comme s'il attendait un signal. Parmi les bougies posées sur les marches, un petit portrait encadré, le métal du cadre terni par les années — le visage qu'il montre ne vous est pas familier, mais son verre, embué par la chaleur des flammes, ne reflète plus très bien son modèle : on y devine plutôt un mot tracé à la cire fondue, chaque lettre comme retournée sur elle-même, ainsi qu'un reflet. Un instant, dans le reflet tremblant des bougies, vous croyez reconnaître un visage qui n'est pas le vôtre — puis, plus loin sur l'eau, des pleurs, si bas qu'ils pourraient n'être que le vent. Nazario ne lève pas les yeux. « Elle aussi attend quelqu'un », dit-il simplement.",
    "fact": "De nombreux peuples mésoaméricains concevaient l'univers comme fait de forces complémentaires et opposées — le jour et la nuit, la vie et la mort, le soleil et la lune — qui se répondent sans jamais s'annuler. Cette idée de dualité imprègne encore aujourd'hui les récits sur Mictlán : le royaume des morts n'y est pas une punition, mais l'autre moitié nécessaire du monde des vivants.",
    "puzzleIntro": "Le reflet a tout retourné : chaque lettre apparaît ici inversée, comme dans un vrai miroir d'eau. Prêtez attention à l'eau et ignorez les leurres, et lisez les bonnes lettres de gauche à droite pour reconstituer le mot.",
    "isMirror": true,
@@ -1119,8 +1128,8 @@ const STAGES = {
    "sub": "L'autel aux sept dictons — 22 h 00",
    "story": "Dans le cimetière, l'ofrenda de la famille de Catalina est à moitié montée : contre un vase ébréché, une photo sans cadre, jaunie, montre une jeune femme pieds nus au bord du lac, souriante, un bouquet de cempasúchil à la main — Nazario ne s'y attarde jamais longtemps. Autour, un verre d'eau, un peu de sel, du pain de mort, un bâton de copal encore fumant, un chemin de pétales en miniature, un morceau de papel picado, une petite cruche de terre cuite. « Elle n'a pas eu le temps de finir », murmure Nazario. Parmi les objets encore épars, sept petites cartes manuscrites : sur chacune, la première moitié d'un dicho — un de ces dictons que les grands-mères répètent sans jamais les finir à voix haute, comme si la seconde moitié allait de soi. À côté, sept autres cartes, mélangées, portent chacune une fin possible, et une lettre.",
    "fact": "Une ofrenda traditionnelle réunit des éléments précis : l'eau pour étancher la soif du voyage, le sel pour que le corps ne se corrompe pas, le pain de mort pour nourrir l'âme, le copal dont la fumée purifie et guide, le cempasúchil dont le parfum et la couleur orangée montrent le chemin, le papel picado qui représente l'air, et une photo du défunt pour que l'offrande lui soit bien destinée. Chaque objet a un rôle ; aucun n'est décoratif.",
-   "puzzleIntro": "Sept dictons mexicains ont été coupés en deux. Les débuts, à gauche, sont dans le bon ordre, chacun accompagné d'un petit symbole et de sa traduction. Repérez, parmi les cartes de droite, celle qui porte exactement le même symbole — c'est elle qui termine le dicton — et notez la lettre qui l'accompagne.",
-   "hint": "Chaque dicton porte un symbole unique (fleur, crâne, bougie…) : il suffit de retrouver, à droite, la carte avec le même symbole, sans avoir besoin de connaître le dicton lui-même. Procédez ainsi pour les sept dictons ; le mot désigne ce que chaque objet de l'autel, ensemble, représente pour celui qu'on n'a pas oublié.",
+   "puzzleIntro": "Sept dictons mexicains ont été coupés en deux. Les débuts, à gauche, sont dans le bon ordre, chacun accompagné d'un petit symbole et de sa traduction. Cliquez sur un début à gauche, puis sur la carte de droite que vous pensez être sa fin : les deux se colorent ensemble pour confirmer le lien. Aidez-vous du sens de chaque moitié et de sa traduction pour deviner l'association, puis notez la lettre qui accompagne chaque fin.",
+   "hint": "Les cartes de droite ne portent plus de symbole : seul le sens du dicton peut vous guider. Lisez chaque début et sa traduction, devinez sa fin probable parmi les cartes de droite, puis cliquez les deux pour les relier — vous pouvez recommencer si l'association ne vous convainc pas. Procédez ainsi pour les sept dictons ; le mot désigne ce que chaque objet de l'autel, ensemble, représente pour celui qu'on n'a pas oublié.",
    "answer": "OFRENDA",
    "isDichos": true,
    "dichos": {
@@ -1231,9 +1240,9 @@ const STAGES = {
   {
    "title": "Papel Picado",
    "sub": "La calle de los papeles recortados — 19:45",
-   "story": "La calle principal está tendida de guirnaldas de papel picado, ese papel de colores recortado en motivos de calaveras y flores que chasquea suavemente con el viento del atardecer. Nazario te espera bajo la última guirnalda, con su perro Xólotl sentado a sus pies, tan silencioso como su dueño. Un tramo de la guirnalda ha sido arrancado y vuelto a colgar al revés, de mala manera: alguien pasó por aquí antes que tú, y rápido. «Ezequiel tiene la casa de empeño, en la esquina de la plaza», dice solo Nazario, señalando una ventana todavía iluminada a esa hora. Colgados entre las banderolas, nueve pequeños cuadrados de papel doblados en cuatro, cada uno recortado con tijeras — tal como Catalina dobla siempre el suyo antes de cortar. Junto a cada cuadrado, otros tres despliegues yacen en el suelo, ligeramente distintos: intentos fallidos, o trampas.",
+   "story": "La calle principal está tendida de guirnaldas de papel picado, ese papel de colores recortado en motivos de calaveras y flores que chasquea suavemente con el viento del atardecer. Nazario te espera bajo la última guirnalda, con su perro Xólotl sentado a sus pies, tan silencioso como su dueño. Un tramo de la guirnalda ha sido arrancado y vuelto a colgar al revés, de mala manera: alguien pasó por aquí antes que tú, y rápido. «Ezequiel tiene la casa de empeño, en la esquina de la plaza», dice solo Nazario, señalando una ventana todavía iluminada a esa hora. Colgados entre las banderolas, nueve pequeños cuadrados de papel doblados en cuatro, cada uno recortado con tijeras — tal como Catalina dobla siempre el suyo antes de cortar. Junto a cada cuadrado, otros dos despliegues yacen en el suelo, ligeramente distintos: intentos fallidos, o trampas.",
    "fact": "El papel picado es una artesanía mexicana nacida en la región de Puebla, donde los artesanos recortan con cuchilla o cincel decenas de hojas de papel de china apiladas para formar un mismo motivo. Colgado durante el Día de los Muertos, simboliza la fragilidad y la brevedad de la vida: el viento que poco a poco lo desgarra recuerda que nada es eterno, ni siquiera el recuerdo que no se cultiva.",
-   "puzzleIntro": "Catalina solo dobló cada cuadrado en cuatro, como en el papel picado de verdad: al desplegarlo, el motivo se refleja en espejo en las cuatro esquinas, nunca en simple rotación ni copiado tal cual. Para cada letra, encuentra, entre los cuatro despliegues propuestos, el que respeta ese espejo de cuatro caras. Atención: un error hace que todo vuelva a empezar desde el primer cuadrado.",
+   "puzzleIntro": "Catalina solo dobló cada cuadrado en cuatro, como en el papel picado de verdad: al desplegarlo, el motivo se refleja en espejo en las cuatro esquinas, nunca en simple rotación ni copiado tal cual. Para cada letra, encuentra, entre los tres despliegues propuestos, el que respeta ese espejo de cuatro caras. Atención: un error hace que todo vuelva a empezar desde el primer cuadrado.",
    "hint": "Un pliegue en cuatro de verdad da un motivo en espejo: lo que está a la izquierda debe aparecer a la derecha invertido, lo de arriba debe aparecer abajo invertido. Si el motivo gira como un molinillo, si se repite igual sin reflejarse, o si falta un agujerito respecto a las otras tres esquinas, no es el despliegue correcto. La palabra de 9 letras adorna cada calle del pueblo esta noche.",
    "answer": "GUIRNALDA",
    "isFoldGame": true
@@ -1289,8 +1298,8 @@ const STAGES = {
    "sub": "El altar de los siete dichos — 22:00",
    "story": "En el cementerio, la ofrenda de la familia de Catalina está a medio montar: apoyada contra un jarrón desportillado, una foto sin marco, amarillenta, muestra a una joven descalza junto al lago, sonriente, con un ramo de cempasúchil en la mano — Nazario nunca se detiene mucho en ella. Alrededor, un vaso de agua, un poco de sal, pan de muerto, una vara de copal todavía humeante, un pequeño camino de pétalos, un trozo de papel picado, un cantarito de barro. «No tuvo tiempo de terminar», murmura Nazario. Entre los objetos aún dispersos, siete tarjetitas manuscritas: en cada una, la primera mitad de un dicho —uno de esos refranes que las abuelas repiten sin terminar nunca en voz alta, como si la segunda mitad se diera por sabida. Al lado, otras siete tarjetas, revueltas, llevan cada una un posible final, y una letra.",
    "fact": "Una ofrenda tradicional reúne elementos precisos: el agua para saciar la sed del viaje, la sal para que el cuerpo no se corrompa, el pan de muerto para alimentar al alma, el copal cuyo humo purifica y guía, el cempasúchil cuyo aroma y color naranja marcan el camino, el papel picado que representa el aire, y una foto del difunto para que la ofrenda le llegue a él. Cada objeto tiene un papel; ninguno es solo decoración.",
-   "puzzleIntro": "Siete dichos mexicanos han sido cortados en dos. Los comienzos, a la izquierda, están en el orden correcto, cada uno con un pequeño símbolo. Localiza, entre las tarjetas de la derecha, la que lleva exactamente el mismo símbolo — es la que completa el dicho — y anota la letra que lo acompaña.",
-   "hint": "Cada dicho lleva un símbolo único (flor, calavera, vela…): basta con encontrar a la derecha la tarjeta con el mismo símbolo. Procede así con los siete dichos; la palabra designa lo que cada objeto del altar, juntos, representa para quien no ha sido olvidado.",
+   "puzzleIntro": "Siete dichos mexicanos han sido cortados en dos. Los comienzos, a la izquierda, están en el orden correcto, cada uno con un pequeño símbolo y su traducción. Haz clic en un comienzo a la izquierda y luego en la tarjeta de la derecha que creas que es su final: ambas se colorean juntas para confirmar el enlace. Guíate por el sentido de cada mitad y su traducción para adivinar la pareja correcta, y anota la letra que acompaña a cada final.",
+   "hint": "Las tarjetas de la derecha ya no llevan símbolo: solo el sentido del dicho puede guiarte. Lee cada comienzo y su traducción, adivina su final probable entre las tarjetas de la derecha, y haz clic en ambas para enlazarlas — puedes repetirlo si la asociación no te convence. Procede así con los siete dichos; la palabra designa lo que cada objeto del altar, juntos, representa para quien no ha sido olvidado.",
    "answer": "OFRENDA",
    "isDichos": true,
    "dichos": {
@@ -1402,9 +1411,9 @@ const STAGES = {
   {
    "title": "Papel Picado",
    "sub": "The street of cut paper — 7:45 pm",
-   "story": "The main street is strung with papel picado garlands, that colored paper cut into skulls and flowers, clicking softly in the evening breeze. Nazario waits under the last garland, his dog Xólotl sitting at his feet, as silent as his master. One stretch of the garland has been torn down and clumsily rehung upside down — someone passed through here before you, and fast. \"Ezequiel runs the pawnshop, on the corner of the square,\" is all Nazario says, pointing to a window still lit at this hour. Hanging among the banners, nine small paper squares folded in four, each cut with scissors — exactly how Catalina always folds hers before cutting. Beside each square, three other unfolded versions lie on the ground, slightly different: failed attempts, or traps.",
+   "story": "The main street is strung with papel picado garlands, that colored paper cut into skulls and flowers, clicking softly in the evening breeze. Nazario waits under the last garland, his dog Xólotl sitting at his feet, as silent as his master. One stretch of the garland has been torn down and clumsily rehung upside down — someone passed through here before you, and fast. \"Ezequiel runs the pawnshop, on the corner of the square,\" is all Nazario says, pointing to a window still lit at this hour. Hanging among the banners, nine small paper squares folded in four, each cut with scissors — exactly how Catalina always folds hers before cutting. Beside each square, two other unfolded versions lie on the ground, slightly different: failed attempts, or traps.",
    "fact": "Papel picado — \"pierced paper\" — is a Mexican craft born in the Puebla region, where artisans cut dozens of stacked tissue-paper sheets with a blade or chisel to form a single shared pattern. Hung for Día de los Muertos, it symbolizes life's fragility and brevity: the wind that slowly tears it apart is a reminder that nothing lasts forever, not even a memory left untended.",
-   "puzzleIntro": "Catalina only ever folded each square in four, as in real papel picado: once unfolded, the pattern mirrors across all four corners, never a simple rotation or an identical copy. For each letter, find, among the four unfolded options, the one that respects that four-way mirror. Careful: one mistake sends you back to the very first square.",
+   "puzzleIntro": "Catalina only ever folded each square in four, as in real papel picado: once unfolded, the pattern mirrors across all four corners, never a simple rotation or an identical copy. For each letter, find, among the three unfolded options, the one that respects that four-way mirror. Careful: one mistake sends you back to the very first square.",
    "hint": "A true four-fold produces a mirrored pattern: whatever sits on the left must reappear on the right reversed, whatever sits on top must reappear on the bottom reversed. If the pattern spins like a pinwheel, if it repeats identically without mirroring, or if one little hole is missing compared to the other three corners, it's not the right unfolding. The 7-letter word hangs over every street tonight.",
    "answer": "GARLAND",
    "isFoldGame": true
@@ -1460,8 +1469,8 @@ const STAGES = {
    "sub": "The altar of seven sayings — 10:00 pm",
    "story": "In the cemetery, the Zurita family's ofrenda stands half-built: propped against a chipped vase, an unframed photo, yellowed with age, shows a barefoot young woman by the lake, smiling, a bunch of cempasúchil in her hand — Nazario never lingers on it for long. Around it, a glass of water, a pinch of salt, pan de muerto bread, a still-smoking stick of copal, a miniature petal path, a scrap of papel picado, a small clay jug. \"She didn't have time to finish,\" Nazario murmurs. Among the objects still scattered about, seven small handwritten cards: on each, the first half of a dicho — one of those sayings grandmothers repeat without ever finishing aloud, as if the second half went without saying. Beside them, seven more cards, shuffled, each carrying a possible ending, and a letter.",
    "fact": "A traditional ofrenda brings together specific elements: water to quench the journey's thirst, salt so the body does not decay, pan de muerto to feed the soul, copal whose smoke purifies and guides, marigolds whose scent and orange color light the way, papel picado representing air, and a photo of the dead so the offering truly reaches them. Every object has a role; none is mere decoration.",
-   "puzzleIntro": "Seven Mexican sayings have been cut in half. The openings, on the left, are in the right order, each marked with a small symbol and its translation. Find, among the cards on the right, the one carrying the exact same symbol — that's the one that completes the saying — and note the letter beside it.",
-   "hint": "Each saying carries a unique symbol (flower, skull, candle…): just find the card on the right with the same symbol, no need to know the saying itself. Do the same for all seven sayings; the word names what every object on the altar, together, represents for someone who was never forgotten.",
+   "puzzleIntro": "Seven Mexican sayings have been cut in half. The openings, on the left, are in the right order, each marked with a small symbol and its translation. Click an opening on the left, then the card on the right you think completes it: both light up in the same color to confirm the link. Use the meaning of each half and its translation to guess the right pairing, then note the letter beside each ending.",
+   "hint": "The cards on the right no longer carry a symbol: only the saying's meaning can guide you. Read each opening and its translation, guess its likely ending among the cards on the right, then click both to link them — you can redo it if the pairing doesn't convince you. Do the same for all seven sayings; the word names what every object on the altar, together, represents for someone who was never forgotten.",
    "answer": "OFRENDA",
    "isDichos": true,
    "dichos": {
@@ -1574,9 +1583,9 @@ const STAGES = {
   {
    "title": "Papel Picado",
    "sub": "Die Straße der geschnittenen Papiere — 19:45 Uhr",
-   "story": "Die Hauptstraße ist mit Girlanden aus papel picado gespannt, jenem bunten Papier, das in Totenkopf- und Blumenmuster geschnitten ist und sanft im Abendwind klappert. Nazario wartet unter der letzten Girlande, sein Hund Xólotl sitzt zu seinen Füßen, so schweigsam wie sein Herr. Ein Abschnitt der Girlande wurde abgerissen und grob verkehrt wieder aufgehängt — jemand war vor Ihnen hier, und das schnell. „Ezequiel hat das Pfandhaus an der Ecke des Platzes“, sagt Nazario nur und zeigt auf ein Fenster, das zu dieser Stunde noch erleuchtet ist. Zwischen den Bannern hängen neun kleine, viermal gefaltete Papierquadrate, jedes mit der Schere geschnitten — genau wie Catalina ihres immer faltet, bevor sie schneidet. Neben jedem Quadrat liegen drei weitere aufgefaltete Varianten am Boden, leicht abweichend: misslungene Versuche, oder Fallen.",
+   "story": "Die Hauptstraße ist mit Girlanden aus papel picado gespannt, jenem bunten Papier, das in Totenkopf- und Blumenmuster geschnitten ist und sanft im Abendwind klappert. Nazario wartet unter der letzten Girlande, sein Hund Xólotl sitzt zu seinen Füßen, so schweigsam wie sein Herr. Ein Abschnitt der Girlande wurde abgerissen und grob verkehrt wieder aufgehängt — jemand war vor Ihnen hier, und das schnell. „Ezequiel hat das Pfandhaus an der Ecke des Platzes“, sagt Nazario nur und zeigt auf ein Fenster, das zu dieser Stunde noch erleuchtet ist. Zwischen den Bannern hängen neun kleine, viermal gefaltete Papierquadrate, jedes mit der Schere geschnitten — genau wie Catalina ihres immer faltet, bevor sie schneidet. Neben jedem Quadrat liegen zwei weitere aufgefaltete Varianten am Boden, leicht abweichend: misslungene Versuche, oder Fallen.",
    "fact": "Papel picado — „durchstochenes Papier“ — ist ein mexikanisches Kunsthandwerk aus der Region Puebla, wo Handwerker mit Klinge oder Stichel Dutzende gestapelte Seidenpapierbögen zu einem gemeinsamen Muster schneiden. Zum Día de los Muertos aufgehängt, symbolisiert es die Vergänglichkeit des Lebens: Der Wind, der es langsam zerreißt, erinnert daran, dass nichts ewig ist — auch keine Erinnerung, um die man sich nicht kümmert.",
-   "puzzleIntro": "Catalina hat jedes Quadrat nur viermal gefaltet, wie beim echten papel picado: einmal aufgefaltet, spiegelt sich das Muster in allen vier Ecken, nie als einfache Drehung oder identische Kopie. Finden Sie für jeden Buchstaben unter den vier angebotenen Auffaltungen diejenige, die diesen vierfachen Spiegel respektiert. Achtung: Ein Fehler lässt alles wieder beim ersten Quadrat beginnen.",
+   "puzzleIntro": "Catalina hat jedes Quadrat nur viermal gefaltet, wie beim echten papel picado: einmal aufgefaltet, spiegelt sich das Muster in allen vier Ecken, nie als einfache Drehung oder identische Kopie. Finden Sie für jeden Buchstaben unter den drei angebotenen Auffaltungen diejenige, die diesen vierfachen Spiegel respektiert. Achtung: Ein Fehler lässt alles wieder beim ersten Quadrat beginnen.",
    "hint": "Eine echte Vierfaltung ergibt ein gespiegeltes Muster: was links liegt, muss rechts spiegelverkehrt wiederkehren, was oben liegt, muss unten spiegelverkehrt wiederkehren. Dreht sich das Muster wie ein Windrad, wiederholt es sich identisch ohne Spiegelung, oder fehlt ein kleines Loch im Vergleich zu den anderen drei Ecken, ist es nicht die richtige Auffaltung. Das 8-Buchstaben-Wort hängt heute Abend über jeder Straße.",
    "answer": "GIRLANDE",
    "isFoldGame": true
@@ -1632,8 +1641,8 @@ const STAGES = {
    "sub": "Der Altar der sieben Redensarten — 22:00 Uhr",
    "story": "Auf dem Friedhof steht die Ofrenda der Familie Zurita halb aufgebaut: an eine angeschlagene Vase gelehnt, zeigt ein ungerahmtes, vergilbtes Foto eine barfüßige junge Frau am See, lächelnd, einen Strauß Cempasúchil in der Hand — Nazario verweilt nie lange darauf. Daneben ein Glas Wasser, etwas Salz, Totenbrot, ein noch rauchender Copal-Stab, ein Miniaturpfad aus Blütenblättern, ein Stück papel picado, ein kleiner Tonkrug. „Sie hatte keine Zeit mehr, fertig zu werden“, murmelt Nazario. Zwischen den noch verstreuten Gegenständen liegen sieben kleine handgeschriebene Karten: Auf jeder steht die erste Hälfte eines Dicho — eines jener Sprichwörter, die Großmütter wiederholen, ohne sie je laut zu Ende zu sprechen, als verstünde sich die zweite Hälfte von selbst. Daneben liegen sieben weitere, durcheinandergeratene Karten, jede mit einem möglichen Ende und einem Buchstaben.",
    "fact": "Eine traditionelle Ofrenda vereint genau bestimmte Elemente: Wasser gegen den Durst der Reise, Salz, damit der Körper nicht verwest, Totenbrot, um die Seele zu nähren, Copal, dessen Rauch reinigt und leitet, Ringelblumen, deren Duft und orange Farbe den Weg weisen, papel picado als Sinnbild der Luft, und ein Foto des Verstorbenen, damit die Gabe ihn wirklich erreicht. Jeder Gegenstand hat eine Aufgabe; keiner ist bloße Dekoration.",
-   "puzzleIntro": "Sieben mexikanische Redensarten wurden in zwei Hälften geteilt. Die Anfänge links stehen in der richtigen Reihenfolge, jeweils mit einem kleinen Symbol und seiner Übersetzung versehen. Finden Sie unter den Karten rechts diejenige mit genau demselben Symbol — sie vervollständigt die Redensart — und notieren Sie den dazugehörigen Buchstaben.",
-   "hint": "Jede Redensart trägt ein eigenes Symbol (Blume, Totenkopf, Kerze…): Suchen Sie einfach rechts die Karte mit demselben Symbol, ohne die Redensart selbst kennen zu müssen. Verfahren Sie so mit allen sieben Redensarten; das Wort nennt, was jeder Gegenstand auf dem Altar zusammen für jemanden bedeutet, der nie vergessen wurde.",
+   "puzzleIntro": "Sieben mexikanische Redensarten wurden in zwei Hälften geteilt. Die Anfänge links stehen in der richtigen Reihenfolge, jeweils mit einem kleinen Symbol und seiner Übersetzung versehen. Klicken Sie links auf einen Anfang und dann rechts auf die Karte, die Ihrer Meinung nach dazu passt: Beide färben sich gleich, um die Verbindung zu bestätigen. Nutzen Sie den Sinn jeder Hälfte und ihre Übersetzung, um das richtige Paar zu erraten, und notieren Sie den Buchstaben neben jedem Ende.",
+   "hint": "Die Karten rechts tragen kein Symbol mehr: Nur der Sinn der Redensart kann Sie leiten. Lesen Sie jeden Anfang und seine Übersetzung, erraten Sie sein wahrscheinliches Ende unter den Karten rechts, und klicken Sie beide an, um sie zu verbinden — Sie können es wiederholen, wenn die Zuordnung Sie nicht überzeugt. Verfahren Sie so mit allen sieben Redensarten; das Wort nennt, was jeder Gegenstand auf dem Altar zusammen für jemanden bedeutet, der nie vergessen wurde.",
    "answer": "OFRENDA",
    "isDichos": true,
    "dichos": {
@@ -1748,9 +1757,9 @@ const STAGES = {
   {
    "title": "Papel Picado",
    "sub": "La strada delle carte ritagliate — 19:45",
-   "story": "La strada principale è tesa di ghirlande di papel picado, quella carta colorata ritagliata in teschi e fiori che scricchiola piano nel vento della sera. Nazario ti aspetta sotto l'ultima ghirlanda, il suo cane Xólotl seduto ai suoi piedi, silenzioso come il padrone. Un tratto della ghirlanda è stato strappato e riattaccato male, al contrario: qualcuno è passato di qui prima di te, e in fretta. «Ezequiel ha il banco dei pegni, all'angolo della piazza», dice soltanto Nazario, indicando una finestra ancora illuminata a quell'ora. Appesi tra le bandierine, nove piccoli quadrati di carta piegati in quattro, ciascuno ritagliato con le forbici — esattamente come Catalina piega sempre il suo prima di tagliare. Accanto a ogni quadrato, altri tre dispiegamenti giacciono a terra, leggermente diversi: tentativi falliti, o trappole.",
+   "story": "La strada principale è tesa di ghirlande di papel picado, quella carta colorata ritagliata in teschi e fiori che scricchiola piano nel vento della sera. Nazario ti aspetta sotto l'ultima ghirlanda, il suo cane Xólotl seduto ai suoi piedi, silenzioso come il padrone. Un tratto della ghirlanda è stato strappato e riattaccato male, al contrario: qualcuno è passato di qui prima di te, e in fretta. «Ezequiel ha il banco dei pegni, all'angolo della piazza», dice soltanto Nazario, indicando una finestra ancora illuminata a quell'ora. Appesi tra le bandierine, nove piccoli quadrati di carta piegati in quattro, ciascuno ritagliato con le forbici — esattamente come Catalina piega sempre il suo prima di tagliare. Accanto a ogni quadrato, altri due dispiegamenti giacciono a terra, leggermente diversi: tentativi falliti, o trappole.",
    "fact": "Il papel picado — «carta traforata» — è un artigianato messicano nato nella regione di Puebla, dove gli artigiani ritagliano con lama o scalpello decine di foglie di carta velina sovrapposte per formare un unico motivo. Appeso durante il Día de los Muertos, simboleggia la fragilità e la brevità della vita: il vento che lo lacera a poco a poco ricorda che nulla è eterno, nemmeno un ricordo che non si coltiva.",
-   "puzzleIntro": "Catalina ha piegato ogni quadrato solo in quattro, come nel vero papel picado: una volta dispiegato, il motivo si riflette a specchio nei quattro angoli, mai in semplice rotazione né copiato identico. Per ogni lettera, trova, tra i quattro dispiegamenti proposti, quello che rispetta questo specchio a quattro facce. Attenzione: un errore fa ricominciare tutto dal primo quadrato.",
+   "puzzleIntro": "Catalina ha piegato ogni quadrato solo in quattro, come nel vero papel picado: una volta dispiegato, il motivo si riflette a specchio nei quattro angoli, mai in semplice rotazione né copiato identico. Per ogni lettera, trova, tra i tre dispiegamenti proposti, quello che rispetta questo specchio a quattro facce. Attenzione: un errore fa ricominciare tutto dal primo quadrato.",
    "hint": "Una vera piegatura in quattro dà un motivo a specchio: ciò che sta a sinistra deve ricomparire a destra invertito, ciò che sta in alto deve ricomparire in basso invertito. Se il motivo gira come un mulinello, se si ripete identico senza riflettersi, o se manca un forellino rispetto agli altri tre angoli, non è il dispiegamento giusto. La parola di 9 lettere adorna ogni strada del paese questa notte.",
    "answer": "GHIRLANDA",
    "isFoldGame": true
@@ -1806,8 +1815,8 @@ const STAGES = {
    "sub": "L'altare dei sette detti — 22:00",
    "story": "Nel cimitero, l'ofrenda della famiglia Zurita è a metà allestita: appoggiata a un vaso scheggiato, una foto senza cornice, ingiallita, mostra una giovane donna scalza in riva al lago, sorridente, un mazzo di cempasúchil in mano — Nazario non vi si sofferma mai a lungo. Intorno, un bicchiere d'acqua, un po' di sale, pane dei morti, un bastoncino di copal ancora fumante, un piccolo sentiero di petali, un pezzo di papel picado, una brocchetta di terracotta. «Non ha avuto tempo di finire», sussurra Nazario. Tra gli oggetti ancora sparsi, sette piccole carte scritte a mano: su ciascuna, la prima metà di un dicho — uno di quei detti che le nonne ripetono senza mai finirli ad alta voce, come se la seconda metà fosse scontata. Accanto, altre sette carte, mescolate, portano ciascuna un possibile finale, e una lettera.",
    "fact": "Un'ofrenda tradizionale riunisce elementi precisi: l'acqua per dissetare il viaggio, il sale perché il corpo non si corrompa, il pane dei morti per nutrire l'anima, il copal il cui fumo purifica e guida, il cempasúchil il cui profumo e colore arancione indicano il cammino, il papel picado che rappresenta l'aria, e una foto del defunto perché l'offerta lo raggiunga davvero. Ogni oggetto ha un ruolo; nessuno è semplice decorazione.",
-   "puzzleIntro": "Sette detti messicani sono stati tagliati in due. Gli inizi, a sinistra, sono nell'ordine giusto, ciascuno con un piccolo simbolo e la sua traduzione. Trova, tra le carte a destra, quella che porta esattamente lo stesso simbolo — è quella che completa il detto — e annota la lettera che lo accompagna.",
-   "hint": "Ogni detto porta un simbolo unico (fiore, teschio, candela…): basta trovare a destra la carta con lo stesso simbolo, senza bisogno di conoscere il detto stesso. Procedi così per i sette detti; la parola indica ciò che ogni oggetto dell'altare, insieme, rappresenta per chi non è stato dimenticato.",
+   "puzzleIntro": "Sette detti messicani sono stati tagliati in due. Gli inizi, a sinistra, sono nell'ordine giusto, ciascuno con un piccolo simbolo e la sua traduzione. Clicca su un inizio a sinistra, poi sulla carta a destra che pensi lo completi: le due si colorano insieme per confermare il collegamento. Usa il senso di ogni metà e la sua traduzione per indovinare l'abbinamento giusto, poi annota la lettera accanto a ogni finale.",
+   "hint": "Le carte a destra non portano più un simbolo: solo il senso del detto può guidarti. Leggi ogni inizio e la sua traduzione, indovina il suo probabile finale tra le carte a destra, poi clicca entrambe per collegarle — puoi ripeterlo se l'abbinamento non ti convince. Procedi così per i sette detti; la parola indica ciò che ogni oggetto dell'altare, insieme, rappresenta per chi non è stato dimenticato.",
    "answer": "OFRENDA",
    "isDichos": true,
    "dichos": {
@@ -2509,14 +2518,14 @@ function mcPick(b){
 
 /* ============ Étape 2 : papel picado (pliage/découpe à 4 miroirs) ============ */
 const FP_QUADS = [
- [[1,0,1],[0,1,0],[1,0,1]],
- [[0,1,0],[1,1,1],[0,1,0]],
+ [[0,1,1],[0,1,0],[1,0,0]],
+ [[1,1,0],[1,0,1],[0,0,1]],
  [[1,1,0],[0,0,1],[1,0,0]],
  [[0,0,1],[1,1,0],[0,1,1]],
  [[1,0,0],[0,1,1],[1,0,1]],
  [[0,1,1],[1,0,0],[0,1,0]],
  [[1,1,1],[0,0,0],[1,0,1]],
- [[0,0,1],[0,1,0],[1,0,0]],
+ [[0,1,0],[1,0,0],[1,0,1]],
  [[1,0,1],[1,1,0],[0,0,1]]
 ];
 function fpMirrorH(Q){ return Q.map(row=>row.slice().reverse()); }
@@ -2834,11 +2843,29 @@ function loteriaMarkup(i,s){
     const dark = ci%FP_COLORS.length===3;
     const txt = dark ? '#2A1608' : '#fff';
     const trHtml = c.tr ? '<div class="lot-tr">'+c.tr+'</div>' : '';
-    return '<div class="lot-card" style="background:'+color+';color:'+txt+';border-color:'+borderColor+'"><div class="lot-icon">'+c.icon+'</div><div class="lot-name">'+c.name+'</div>'+trHtml+'<div class="lot-letter">'+c.letter+'</div></div>';
+    return '<div class="lot-card" onclick="lotPick('+i+',\''+c.letter+'\')" style="background:'+color+';color:'+txt+';border-color:'+borderColor+'"><div class="lot-icon">'+c.icon+'</div><div class="lot-name">'+c.name+'</div>'+trHtml+'<div class="lot-letter">'+c.letter+'</div></div>';
   }).join('');
   const riddles = L.riddles.map(r=>'<li>'+r+'</li>').join('');
   return '<div class="puzzle-intro">'+s.puzzleIntro+'</div>'+
     '<div class="lot-wrap"><div class="lot-cards">'+grid+'</div><ol class="lot-riddles">'+riddles+'</ol></div>';
+}
+function lotPick(i, letter){
+  const inp = document.getElementById('ans'+i);
+  if(!inp) return;
+  const maxLen = normalizeWord(STAGES[currentLang][i-1].answer).length;
+  if(inp.value.length < maxLen) inp.value += letter;
+  inp.dispatchEvent(new Event('input',{bubbles:true}));
+  inp.focus();
+}
+function domPick(el, i, letter){
+  if(el.classList.contains('dom-used')) return;
+  el.classList.add('dom-used');
+  const inp = document.getElementById('ans'+i);
+  if(!inp) return;
+  const maxLen = normalizeWord(STAGES[currentLang][i-1].answer).length;
+  if(inp.value.length < maxLen) inp.value += letter;
+  inp.dispatchEvent(new Event('input',{bubbles:true}));
+  inp.focus();
 }
 
 /* ============ Étape 9 : alebrijes (assemblage de créatures) ============ */
@@ -2854,7 +2881,7 @@ function alebrijeMarkup(i,s){
     const letterIdx = (pos+3)%n;
     const letterBg = FP_COLORS[letterIdx];
     const letterTxt = letterIdx===3 ? '#2A1608' : '#fff';
-    return '<div class="dom-tile" style="border-color:'+borderColor+'">'+
+    return '<div class="dom-tile" onclick="domPick(this,'+i+',\''+t.letter+'\')" style="border-color:'+borderColor+'">'+
       '<div class="dom-inner">'+
         '<div class="dom-half" style="background:'+colorA+'">'+t.a+'</div><div class="dom-div"></div><div class="dom-half" style="background:'+colorB+'">'+t.b+'</div>'+
       '</div>'+
@@ -2912,7 +2939,7 @@ const DIC_SELECTED = {};
 function dicSelectLeft(i,k){
   if(DIC_SELECTED[i]===k){ DIC_SELECTED[i]=null; }
   else { DIC_SELECTED[i]=k; }
-  document.querySelectorAll('#page'+i+' .dic-left li').forEach(function(el,idx){
+  document.querySelectorAll('#page'+i+' .dic-left-item').forEach(function(el,idx){
     el.classList.toggle('dic-armed', idx===DIC_SELECTED[i]);
   });
 }
@@ -2929,7 +2956,7 @@ function dicLinkRight(i,pos){
     card.querySelectorAll('.dic-tr,.dic-letter').forEach(function(el){ el.style.color = txt; });
   }
   DIC_SELECTED[i] = null;
-  document.querySelectorAll('#page'+i+' .dic-left li').forEach(function(el){ el.classList.remove('dic-armed'); });
+  document.querySelectorAll('#page'+i+' .dic-left-item').forEach(function(el){ el.classList.remove('dic-armed'); });
 }
 function dichosMarkup(i,s){
   const D = s.dichos;
@@ -2997,7 +3024,7 @@ function candlesMarkup(i,s){
 }
 
 /* ============ Étape 3 : écriture miroir sur la vitre embuée ============ */
-const MIRROR_DECOY_LETTERS = 'ZKWQYXJHFMBPC';
+const MIRROR_DECOY_LETTERS = 'RKWQYXJHFMBPC';
 function mirrorMarkup(i,s){
   const word = normalizeWord(s.answer);
   const N = word.length;
